@@ -1,17 +1,76 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Weather App</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="home">
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-grid *ngIf="dataWeather" >
+  <ion-row>
+    <ion-col col-md-12 text-center>
+     <h4>{{ dataWeather.name}},{{ dataWeather.sys.country}}</h4>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-md-6>
+      <h5 class="description">
+        {{dataWeather.weather[0].main}}
+        <br>
+        <small>{{dataWeather.weather[0].description}}</small>
+      </h5>
+    </ion-col>
+    <ion-col col-md-6>
+      <div class="icon">
+        <!--<img src="{{dataWeather.weather[0].icon}}" alt="image">-->
+      </div>
+    </ion-col>
+  </ion-row>
+  <!--<ion-row>-->
+    <!--<ion-col col-md-3 offset-md-2>-->
+
+      <!--<div class="icon">-->
+        <!--<img src=" {{dataWeather.weather[0].icon}}" alt="">-->
+        <!--&lt;!&ndash;{{dataWeather.weather[0].icon}}&ndash;&gt;-->
+      <!--</div>-->
+      <!--<h3 class="desc">-->
+        <!--{{ dataWeather.weather[0].main}}-->
+      <!--</h3>-->
+      <!--<h1 class="temp">-->
+        <!--{{ dataWeather.main.temp}}&deg;-->
+      <!--</h1>-->
+    <!--</ion-col>-->
+  <!--</ion-row>-->
+
+  <ion-row class="footer">
+    <ion-col col-md-12>
+      <ion-list class="checkList">
+        <ion-item>
+          <!--{{ dataWeather.dt * 1000 | date:'yyyy-MM-dd HH:mm:ss Z'}}-->
+          <strong>Date:</strong> {{ dataWeather.dt * 1000 | date:'yyyy-MM-dd HH:mm zzzz'}}
+        </ion-item>
+        <ion-item>
+          <strong>Temp:</strong> {{dataWeather.main.temp}}
+        </ion-item>
+        <ion-item>
+          <strong>Visibility:</strong>{{dataWeather.visibility}}
+        </ion-item>
+        <ion-item>
+          <strong>Wind:</strong> {{ dataWeather.wind.speed}} , {{dataWeather.wind.deg}}&deg;
+        </ion-item>
+        <ion-item>
+          <strong>Humidity:</strong> {{dataWeather.main.humidity}}
+        </ion-item>
+        <ion-item>
+          <strong>Pressure:</strong>{{dataWeather.main.pressure}}hPa
+        </ion-item>
+        <ion-item>
+          <strong>Temperature Max:</strong>{{dataWeather.main.temp_max}}&deg;
+        </ion-item>
+        <ion-item>
+          <strong>Temperature Min:</strong>{{dataWeather.main.temp_min}}&deg;
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid >
 </ion-content>
